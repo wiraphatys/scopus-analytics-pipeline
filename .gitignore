@@ -6,3 +6,6 @@ __pycache__/
 
 # Ignore the .env file
 .env
+
+# Ignore the .vscode files
+.vscode
