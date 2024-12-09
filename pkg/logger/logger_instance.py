@@ -16,10 +16,9 @@ class Logger:
         :return: logger instance
         """
         if cls._logger is None:
-            # ตั้งค่าการบันทึก log หากยังไม่มี logger instance
             logging.basicConfig(
                 level=logging.INFO,
-                format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
+                format="%(asctime)s \t %(levelname)s \t %(name)s \t %(message)s",
                 handlers=[
                     logging.StreamHandler(),
                 ]
