@@ -9,3 +9,6 @@ __pycache__/
 
 # Ignore the .vscode files
 .vscode
+
+# Ignore test.ipynb
+test.ipynb

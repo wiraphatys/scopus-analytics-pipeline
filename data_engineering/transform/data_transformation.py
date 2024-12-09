@@ -1,12 +1,6 @@
 from pkg.logger.logger_instance import Logger
+from pkg.helper.dict_helper import safe_get_nested
 from typing import Tuple
-
-def safe_get_nested(record, keys):
-    for key in keys:
-        record = record.get(key, None)
-        if record is None:
-            return None
-    return record
 
 def retrieve_institutions_and_countries(authorships: list[dict]) -> Tuple[list[str], list[str]]:
     institutions: set[str] = set()
@@ -42,7 +36,7 @@ def transform_data(raw_data: list[dict]) -> list[dict]:
         cited_by_count: int = safe_get_nested(record, keys=["cited_by_count"])
         domain: str = safe_get_nested(record, keys=["primary_topic", "domain", "display_name"])
         field: str = safe_get_nested(record, keys=["primary_topic", "field", "display_name"])
-        primary_topic_score: float = safe_get_nested(record, keys=["primary_tpic", "score"])
+        primary_topic_score: float = safe_get_nested(record, keys=["primary_topic", "score"])
         referenced_works_count: float = safe_get_nested(record, keys=["referenced_works_count"])
         sustainable_development_goals: list[dict] = [
             {"score": item["score"], "display_name": item["display_name"]}

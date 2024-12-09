@@ -4,6 +4,8 @@ from .config import get_db_name, get_mongo_uri
 from pkg.logger.logger_instance import Logger
 
 class MongoConnector:
+    _instance = None
+
     def __init__(self) -> None:
         self.client = None
         self.db = None
@@ -21,3 +23,10 @@ class MongoConnector:
         if self.client:
             self.client.close()
             self.log.info("MongoDB connection closed.")
+    
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = MongoConnector().connect()['openalex_research']
+        
+        return cls._instance
